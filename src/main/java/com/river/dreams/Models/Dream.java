@@ -5,65 +5,30 @@ import java.util.ArrayList;
 
 public class Dream {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long userId;
-
+    @Column(length = 64)
     private String title;
 
+    @Column(length = 2048)
     private String description;
 
-    private ArrayList<String> chapters = new ArrayList<>();
-
+    @Column(length = 2048)
     private String notes;
 
+    @Column
+    private Boolean hidden;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "chapter")
+    private ArrayList<String> chapters = new ArrayList<>();
+
+    private User user;
+
+    private ArrayList<Tags> tags;
+
+    private ArrayList<Comment> comments;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public ArrayList<String> getChapters() {
-        return chapters;
-    }
-
-    public void setChapters(ArrayList<String> chapters) {
-        this.chapters = chapters;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
 }

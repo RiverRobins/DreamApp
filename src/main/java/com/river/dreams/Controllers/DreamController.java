@@ -5,5 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-public class Dreams {
+@Controller
+public class DreamController {
+
+    public DreamController(){
+
+    }
+
+    public String home(){
+        return "";
+    }
 }
