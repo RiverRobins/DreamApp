@@ -24,10 +24,15 @@ public class Dream {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "chapter")
     private ArrayList<String> chapters = new ArrayList<>();
 
+    @ManyToOne
     private User user;
 
+    @ManyToMany
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private ArrayList<Tags> tags;
 
+    @ManyToOne
+    @JoinColumn(name = "dream_id", insertable = false, updatable = false)
     private ArrayList<Comment> comments;
 
 
