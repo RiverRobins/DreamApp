@@ -2,12 +2,13 @@ package com.river.dreams.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 60, unique = true)
@@ -17,9 +18,10 @@ public class User {
     @Column
     private String password;
 
-    @Column(columnDefinition = "text")
+    @Column(length = 1024)
     private String bio;
 
+    @Column(columnDefinition = "text")
     private String profilePicture;
 
     @OneToMany(mappedBy = "user")
